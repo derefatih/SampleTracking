@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +32,15 @@ namespace BlogApp.WebUI
         {
             services.AddTransient<ISampleRepository, EfSampleRepository>();
             services.AddTransient<IEmployeeRepository, EfEmployeeRepository>();
-            services.AddDbContext<PMContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b=>b.MigrationsAssembly("ProjectManagement.WebUI")));
+            services.AddDbContext<PMContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b=>b.MigrationsAssembly("ProjectManagement.WebUI")));
+
+
+            //add identity
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<PMContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc();
         }
 
@@ -44,7 +53,9 @@ namespace BlogApp.WebUI
             }
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            
+            app.UseAuthentication();
+
+
             app.UseStaticFiles(new StaticFileOptions{
                 FileProvider = new PhysicalFileProvider(Path.Combine
                 (Directory.GetCurrentDirectory(),"node_modules")),

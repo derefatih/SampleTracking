@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProjectManagement.Entity;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace ProjectManagement.Data.Concrete.EFCore
 {
-    public class PMContext:DbContext
+    public class PMContext:IdentityDbContext<ApplicationUser>
     {
         public PMContext(DbContextOptions<PMContext> options)
             :base(options)
