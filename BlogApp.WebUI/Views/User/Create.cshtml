@@ -1,0 +1,72 @@
+﻿@model UserRegisterModel
+
+<div class="container">
+    <div id="accordion">
+        <form asp-controller="User" asp-action="Create" method="post" id="userCreateForm">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="card mb-2">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <span class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Yeni Kullanıcı
+                        </span>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Adı:</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Soyadı:</label>
+                                <input asp-for="Surname" class="form-control" />
+                                <span asp-validation-for="Surname" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Email:</label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Parola:</label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Kullanıcı Adı:</label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="input-icons">
+                <a class="btn btn-warning" onclick="history.go(-1)">
+                    <i class="fas fa-arrow-alt-circle-left"></i>
+                    Geri
+                </a>
+                <a class="btn btn-danger" onclick="document.getElementById('userCreateForm').reset();">
+                    <i class="fas fa-trash-restore-alt"></i>
+                    Temizle
+                </a>
+                <button type="submit" class="btn btn-success float-right">
+                    <i class="fas fa-save mr-3">
+                    </i>
+                    Kaydet
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

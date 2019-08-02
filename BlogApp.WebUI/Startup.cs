@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using ProjectManagement.Data.Abstract;
 using ProjectManagement.Data.Concrete.EFCore;
+using ProjectManagement.Entity;
 
 namespace BlogApp.WebUI
 {

@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectManagement.Data.Concrete.EFCore
+namespace ProjectManagement.Entity
 {
     public class ApplicationUser:IdentityUser
     {
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
 }
